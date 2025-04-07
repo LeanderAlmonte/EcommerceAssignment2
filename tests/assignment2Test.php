@@ -1,9 +1,11 @@
 <?php
 
 require_once (dirname(__DIR__).'/models/project.php');
+require_once (dirname(__DIR__).'/models/employee.php');
 
 use PHPUnit\Framework\TestCase;
 use models\Project;
+use models\Employee;
 
 class Assignment2Test extends TestCase {
 

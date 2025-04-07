@@ -53,7 +53,7 @@ class Employee{
     }
 
     // Set the department for this employee
-    public function setDepartmentID(Department $departmentID) {
+    public function setDepartmentID($departmentID) {
         $this->departmentID = $departmentID;
     }
 
