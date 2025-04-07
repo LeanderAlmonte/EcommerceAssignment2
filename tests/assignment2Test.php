@@ -15,6 +15,15 @@ class Assignment2Test extends TestCase {
         $this->assertEquals(100, $project->getBudget());
     }
 
+    public function testInvalidBudget() {
+
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage("Budget must be greater than zero.");
+        $project = new Project();
+        $project->setBudget(0);
+
+    }
+
     // Test the validateEmployeeRecord method
     public function testValidateEmployeeRecord() {
       // Create an instance of the Employee class

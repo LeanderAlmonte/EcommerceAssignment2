@@ -2,6 +2,8 @@
 
 namespace models;
 
+use Exception;
+
 use database\DBConnectionManager;
 
 require_once(dirname(__DIR__) . "/core/db/dbconnectionmanager.php");
@@ -57,7 +59,7 @@ class Project {
 
     private function validateBudget($budget) {
         if ($budget <= 0) {
-            throw new Exception("Budget must be a positive number greater than zero.");
+            throw new Exception("Budget must be greater than zero.");
         }
         return (double) $budget;
     }

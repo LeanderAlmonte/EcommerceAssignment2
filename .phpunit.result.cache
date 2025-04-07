@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Assignment2Test::testBudget":8,"Assignment2Test::testValidateEmployeeRecord":8},"times":{"Assignment2Test::testBudget":4.068,"Assignment2Test::testValidateEmployeeRecord":4.075}}
+{"version":1,"defects":{"Assignment2Test::testBudget":8,"Assignment2Test::testValidateEmployeeRecord":8,"Assignment2Test::testInvalidBudget":7},"times":{"Assignment2Test::testBudget":4.057,"Assignment2Test::testValidateEmployeeRecord":4.057,"Assignment2Test::testInvalidBudget":4.077}}
