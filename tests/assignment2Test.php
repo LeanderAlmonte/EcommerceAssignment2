@@ -13,4 +13,34 @@ class Assignment2Test extends TestCase {
         $this->assertEquals(100, $project->getBudget());
     }
 
+    // Test the validateEmployeeRecord method
+    public function testValidateEmployeeRecord() {
+      // Create an instance of the Employee class
+      $employee = new Employee();
+
+      // Test when the firstName is empty
+      $employee->setFirstName("");
+      $employee->setTitle("Manager");
+      $employee->setDepartmentID(1);
+      $this->assertEquals("First Name is required.", $employee->validateEmployeeRecord());
+
+      // Test when the title is empty
+      $employee->setFirstName("John");
+      $employee->setTitle("");
+      $employee->setDepartmentID(1);
+      $this->assertEquals("Title is required.", $employee->validateEmployeeRecord());
+
+      // Test when the departmentID is empty
+      $employee->setFirstName("John");
+      $employee->setTitle("Manager");
+      $employee->setDepartmentID(null);
+      $this->assertEquals("Department ID is required.", $employee->validateEmployeeRecord());
+
+      // Test when all fields are valid
+      $employee->setFirstName("John");
+      $employee->setTitle("Manager");
+      $employee->setDepartmentID(1);
+      $this->assertTrue($employee->validateEmployeeRecord());
+    }
+
 }
