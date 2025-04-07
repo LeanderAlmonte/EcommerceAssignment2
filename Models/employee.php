@@ -85,9 +85,34 @@ class Employee{
         $stmt = $this->dbConnection->prepare($query);
         $stmt->bindParam(':employeeID', $this->employeeID);
         echo "ID: ".$this->employeeID;
-    //    $stmt ->setFetchMode(\PDO::FETCH_CLASS, 'Employee');
+     //$stmt ->setFetchMode(\PDO::FETCH_CLASS, 'Employee');
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, Employee::class);
+    }
+
+    // Function to validate user input
+    function validateInput($data) {
+        // Trim whitespace from the beginning and end of the input
+        $data = trim($data);
+        // Remove backslashes from the input
+        $data = stripslashes($data);
+        // Convert special characters to HTML entities
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    // Employee Record Validation: Ensure all employee records contain necessary details: first name, departmentID, and title.
+    public function validateEmployeeRecord() {
+        if (empty($this->firstName)) {
+            return "First Name is required.";
+        }
+        if (empty($this->title)) {
+            return "Title is required.";
+        }
+        if (empty($this->departmentID)) {
+            return "Department ID is required.";
+        }
+        return true;
     }
     
 }
