@@ -43,7 +43,7 @@ class Project {
     }
 
     public function setBudget($budget) {
-        $this->budget = $budget;
+        $this->budget = $this->validateBudget($budget);
     }
 
     // Getter and setter for status
@@ -54,6 +54,25 @@ class Project {
     public function setStatus($status) {
         $this->status = $status;
     }
+
+    private function validateBudget($budget) {
+        if ($budget <= 0) {
+            throw new Exception("Budget must be a positive number greater than zero.");
+        }
+        return (double) $budget;
+    }
+
+    // Function to validate user input
+function validateInput($data) {
+    // Trim whitespace from the beginning and end of the input
+    $data = trim($data);
+    // Remove backslashes from the input
+    $data = stripslashes($data);
+    // Convert special characters to HTML entities
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 
     // Read all projects
     public function read() {
