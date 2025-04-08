@@ -36,6 +36,10 @@ class Project {
     }
 
     public function setName($name) {
+        $name = $this->validateInput($name);
+        if (empty($name)) {
+            throw new Exeption("Project name is required.");
+        }
         $this->name = $name;
     }
 
@@ -45,7 +49,11 @@ class Project {
     }
 
     public function setBudget($budget) {
-        $this->budget = $this->validateBudget($budget);
+        if (!is_numeric($budget) || $budget === " " || $budget <= 0) {
+            throw new Exception("Budget is required and must be a valid number");
+
+        }
+        $this->budget = $budget;
     }
 
     // Getter and setter for status
@@ -57,20 +65,10 @@ class Project {
         $this->status = $status;
     }
 
-    private function validateBudget($budget) {
-        if ($budget <= 0) {
-            throw new Exception("Budget must be greater than zero.");
-        }
-        return (double) $budget;
-    }
-
-    // Function to validate user input
+    
 function validateInput($data) {
-    // Trim whitespace from the beginning and end of the input
     $data = trim($data);
-    // Remove backslashes from the input
     $data = stripslashes($data);
-    // Convert special characters to HTML entities
     $data = htmlspecialchars($data);
     return $data;
 }
